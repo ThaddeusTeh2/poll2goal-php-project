@@ -55,6 +55,15 @@
                 <li class="nav-item">
                   <a aria-current='page' class='nav-link' href='/'>Home</a>
                 </li>
+
+                <li class="nav-item">
+                  <a aria-current='page' class='nav-link' href='/userctrl'>Users</a>
+                </li>
+
+                <li class="nav-item">
+                  <a aria-current='page' class='nav-link' href='/postctrl'>Manage Posts</a>
+                </li>
+
                 @auth
                   <li class="nav-item">
                     <a aria-current='page' class='nav-link' href='/posts'>My Posts</a>
