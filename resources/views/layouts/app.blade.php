@@ -57,17 +57,10 @@
                 </li>
 
                 <li class="nav-item">
-                  <a aria-current='page' class='nav-link' href='/userctrl'>Users</a>
-                </li>
-
-                <li class="nav-item">
-                  <a aria-current='page' class='nav-link' href='/postctrl'>Manage Posts</a>
+                  <a aria-current='page' class='nav-link' href='/ctrl'>Manage</a>
                 </li>
 
                 @auth
-                  <li class="nav-item">
-                    <a aria-current='page' class='nav-link' href='/posts'>My Posts</a>
-                  </li>
                   <li class="nav-item">
                     <a aria-current='page' class='nav-link' href='/logout'>Logout</a>
                   </li>

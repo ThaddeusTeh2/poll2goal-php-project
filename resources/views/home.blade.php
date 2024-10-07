@@ -3,17 +3,18 @@
 @section('title', 'Home')
 
 @section('content')
-    <!--card-->
-    <div class="container min-vh-100">
+<div class="container min-vh-100">
+    <h1>Hello, {{ $name }}</h1>
+    @foreach( $posts as $post )
         <div class="card">
-            <h5 class="card-header">Poll</h5>
             <div class="card-body">
-              <h5 class="card-title">Pineapple on pizza</h5>
-              <p class="card-text">Some ppl like some dont, which one r u?</p>
-              <form>
-              <a href="#" class="btn btn-primary">vote</a>
-              </form>
+                <h3>{{ $post->content }}</h3>
+                <h5>Posted by {{ $post->user->name }}</h5>
+                <div class="d-flex align-items-center gap-2">
+                    <a href="/posts/{{ $post->id }}" class="btn btn-success rounded btn-sm">View</a>
+                </div>
             </div>
-          </div>
-    </div>
+        </div>
+    @endforeach
+</div>
 @endsection

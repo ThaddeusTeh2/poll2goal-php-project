@@ -4,9 +4,10 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SignUpController;
-//use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\LoginController;
-//use App\Http\Controllers\PostController;
+use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\ManageController;
+use App\Http\Controllers\PostController;
 
 // home 
 Route::get('/', [ HomeController::class, 'loadHomePage' ]);
@@ -39,6 +40,17 @@ Route::get("/logout", [
     LogoutController::class,
     'logout'
 ]);
+
+// manage users & posts page
+Route::get("/ctrl", [
+    ManageController::class,
+    'loadManagePage'
+]);
+
+// posts page
+
+
+
 
 
 Route::resource("posts", PostController::class);
