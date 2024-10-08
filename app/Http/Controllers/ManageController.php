@@ -19,6 +19,9 @@ class ManageController extends Controller
 
         // load all the posts
         $posts = post::latest()->get(); 
+
+        // load all the users
+        // $users = user::latest()->get(); 
         
         return view("ctrl", [ 'name' => $name, 'posts' => $posts ]);
         // return view("ctrl");

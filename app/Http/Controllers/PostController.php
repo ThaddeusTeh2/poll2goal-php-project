@@ -18,7 +18,7 @@ class PostController extends Controller
         // load the posts
         // ->latest() is to order the posts by descending order
         $posts = auth()->user()->posts()->latest()->get();
-        return view("posts.index", [ "posts" => $posts ]);
+        return view("ctrl", [ "posts" => $posts ]);
         // compact('posts')
     }
 
@@ -42,7 +42,7 @@ class PostController extends Controller
         // create post with the current logged in user (user_id) built-in
         $post = auth()->user()->posts()->create( $validatedData );
 
-        return redirect("/posts");
+        return redirect("ctrl");
     }
 
     /**
@@ -84,7 +84,7 @@ class PostController extends Controller
         // pass in validated data to update the post
         $post->update($validatedData);
 
-        return redirect("/posts");
+        return redirect("ctrl");
     }
 
     /**
@@ -95,9 +95,12 @@ class PostController extends Controller
         // load the post by id
         $post = Post::findOrFail($id);
 
+        // make sure only the post owner, mods and admins can delete post
+        Gate::authorize('delete',$post);
+
         // delete post
         $post->delete();
 
-        return redirect("/posts");
+        return redirect("ctrl");
     }
 }

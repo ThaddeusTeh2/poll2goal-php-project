@@ -52,6 +52,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav mx-auto">
+                @auth
                 <li class="nav-item">
                   <a aria-current='page' class='nav-link' href='/'>Home</a>
                 </li>
@@ -60,7 +61,7 @@
                   <a aria-current='page' class='nav-link' href='/ctrl'>Manage</a>
                 </li>
 
-                @auth
+                
                   <li class="nav-item">
                     <a aria-current='page' class='nav-link' href='/logout'>Logout</a>
                   </li>
@@ -81,7 +82,12 @@
     </nav>
     <!-- Header End -->
 
+
+      
     @yield('content')
+
+
+
 
     <!-- footer -->
     <div id="footer" class="d-flex justify-content-center pt-5">
