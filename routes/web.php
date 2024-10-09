@@ -8,6 +8,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ManageController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
+
 
 // home 
 Route::get('/', [ HomeController::class, 'loadHomePage' ]);
@@ -18,7 +20,7 @@ Route::get("/login", [
     'loadLoginPage'
 ]);
 
-// login 
+// login logic
 Route::post("/login", [
     LoginController::class,
     'doLogin'
@@ -41,27 +43,21 @@ Route::get("/logout", [
     'logout'
 ]);
 
-// manage users & posts page
+// manage posts page
 Route::get("/ctrl", [
-    ManageController::class,
-    'loadManagePage'
+    PostController::class,
+    "index"
 ]);
 
-// posts page
+// manage users page
+Route::get("/users", [
+    UserController::class,
+    'index'
+]);
 
 
-
-
-
+//poll routes
 Route::resource("posts", PostController::class);
 
-// Post routes ^^
-/*
-- GET `/posts` (index)
-- GET `/posts/create` (create)
-- POST `/posts` (store)
-- GET `/posts/{post}` (show)
-- GET `/posts/{post}/edit` (edit)
-- PUT/PATCH `/posts/{post}` (update)
-- DELETE `/posts/{post}` (destroy)
-*/
+//user routes
+Route::resource("users", UserController::class);

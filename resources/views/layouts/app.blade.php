@@ -58,8 +58,15 @@
                 </li>
 
                 <li class="nav-item">
-                  <a aria-current='page' class='nav-link' href='/ctrl'>Manage</a>
+                  <a aria-current='page' class='nav-link' href='/ctrl'>Manage Posts</a>
                 </li>
+
+                {{-- @auth("admin") --}}
+                <li class="nav-item">
+                  <a aria-current='page' class='nav-link' href='/users'>Manage Users</a>
+                </li>
+                {{-- @endauth --}}
+                
 
                 
                   <li class="nav-item">
@@ -82,12 +89,7 @@
     </nav>
     <!-- Header End -->
 
-
-      
-    @yield('content')
-
-
-
+  @yield('content')
 
     <!-- footer -->
     <div id="footer" class="d-flex justify-content-center pt-5">
