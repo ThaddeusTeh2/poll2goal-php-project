@@ -21,9 +21,12 @@
 
     <!--TODO comments func here-->
     <div class="m-5">
+        <form action="" method="POST">
+            @CSRF
         <label for="comment-box" class="form-label">Leave a comment.</label>
         <textarea class="form-control" id="comment" rows="3"></textarea>
         <a href="#" class="btn btn-primary m-2"><i class="bi bi-send"></i></a>
+        </form>
       </div>
 
 

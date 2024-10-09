@@ -52,7 +52,6 @@ class PostController extends Controller
 
         // create post with the current logged in user (user_id) built-in
         $post = auth()->user()->posts()->create( $validatedData );
-
         return redirect("ctrl");
     }
 
