@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Post;
 use App\Models\User;
 
@@ -16,11 +17,20 @@ class PostController extends Controller
      */
     public function index()
     {
+        //if the current user is a normal user
+        if (auth()->user()->role === "user"){
         // load the posts
         // ->latest() is to order the posts by descending order
         $posts = auth()->user()->posts()->latest()->get();
         return view("ctrl", [ "posts" => $posts ]);
         // compact('posts')
+        }
+
+        //if the user has a higher role
+        else {
+            $posts = Post::latest()->get();
+            return view("ctrl", [ "posts" => $posts ]);
+        }
     }
 
     /**

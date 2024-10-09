@@ -8,6 +8,7 @@
 <div class="container text-center p-5">
     <div class="p-3">
       <h1>{{ $post->content }}</h1>
+      <h4>by {{ $post->user->name }}</h4>
     </div>
 
     <div>
@@ -17,7 +18,14 @@
 
 
     <!--TODO voting func here-->
-</div>
+
+    <!--TODO comments func here-->
+    <div class="m-5">
+        <label for="comment-box" class="form-label">Leave a comment.</label>
+        <textarea class="form-control" id="comment" rows="3"></textarea>
+        <a href="#" class="btn btn-primary m-2"><i class="bi bi-send"></i></a>
+      </div>
+
 
 @endsection
 

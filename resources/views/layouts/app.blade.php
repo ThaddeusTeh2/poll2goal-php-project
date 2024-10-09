@@ -61,11 +61,12 @@
                   <a aria-current='page' class='nav-link' href='/ctrl'>Manage Posts</a>
                 </li>
 
-                {{-- @auth("admin") --}}
+                @if (auth()->user()->role === "admin")
                 <li class="nav-item">
                   <a aria-current='page' class='nav-link' href='/users'>Manage Users</a>
                 </li>
-                {{-- @endauth --}}
+                @endif
+                
                 
 
                 
