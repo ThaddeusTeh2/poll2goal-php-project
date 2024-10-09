@@ -18,4 +18,6 @@ class Post extends Model
         // this is to indicate that a post is belong to a user
         return $this->belongsTo(User::class);
     }
+
+
 }

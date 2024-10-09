@@ -21,12 +21,25 @@
 
     <!--TODO comments func here-->
     <div class="m-5">
-        <form action="" method="POST">
+        <form action="/posts" method="POST">
             @CSRF
         <label for="comment-box" class="form-label">Leave a comment.</label>
         <textarea class="form-control" id="comment" rows="3"></textarea>
         <a href="#" class="btn btn-primary m-2"><i class="bi bi-send"></i></a>
         </form>
+      </div>
+
+      <!--comments echoed here-->
+
+      <div>
+        @foreach($comments as $comment)
+        <div class="card m-2">
+          <div class="card-body">
+              <h3>{{ $comment->comment }}</h3>
+              {{-- <h5>by {{ $comment->user->name }}</h5> --}}
+          </div>
+       </div>
+       @endforeach
       </div>
 
 

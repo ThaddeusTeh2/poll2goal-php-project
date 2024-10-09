@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\Comment;
+
+
 
 class CommentController extends Controller
 {
@@ -12,7 +16,9 @@ class CommentController extends Controller
     public function index()
     {
         //fetch all the comments
-        $comments = Comment::latest()->get();
+        $comments = DB::table('comments')->latest()->get();
+        // $comments = Comment::latest()->get();
+        
         return view("posts.show", [ "comments" => $comments ]);
 
     }
@@ -37,7 +43,7 @@ class CommentController extends Controller
         // create comment with the current logged in user (user_id) built-in
         $post = auth()->user()->comments()->create( $validatedData );
 
-        return redirect("show");
+        // return redirect("posts.show");
     }
 
     /**

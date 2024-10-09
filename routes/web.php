@@ -63,3 +63,7 @@ Route::resource("posts", PostController::class);
 
 //user routes
 Route::resource("users", UserController::class);
+
+//comment routes
+Route::resource("show", CommentController::class);
+
