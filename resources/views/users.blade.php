@@ -17,6 +17,8 @@
             <h3 class="text-dark">{{ $user->name }}</h3>
 
             <form action="/users/{{ $user->id }}" method="POST">
+                @csrf
+                @method ("PUT")
                 <div class="form-group mb-3">
                     <label for="role">Role</label>
                     <select name="role" id="role">
@@ -24,12 +26,13 @@
 
                         <option value="user" <?php echo $user->role== 'user' ? "selected" : "" ?> >User</option>
 
-                        <option value="tm" <?php echo $user->role== 'mod' ? "selected" : "" ?> >Ticket Manager</option>
+                        <option value="tm" <?php echo $user->role== 'mod' ? "selected" : "" ?> >Mod</option>
 
                         <option value="admin" <?php echo $user->role== 'admin' ? "selected" : "" ?> >Admin</option>
 
                     </select>
                 </div>
+                <button class="btn btn-outline-dark rounded btn-sm">Update</button>            
             </form>
             
 
@@ -48,6 +51,7 @@
             <h3 class="text-dark">{{ $user->name }}</h3>
             
             <form action="/users/{{ $user->id }}" method="POST">
+                @method ("PUT")
                 <div class="form-group mb-3">
                     <label for="role">Role</label>
                     <select name="role" id="role">
@@ -61,6 +65,7 @@
 
                     </select>
                 </div>
+                <button class="btn btn-outline-dark rounded btn-sm">Update</button>            
             </form>
               
             <h4>{{ $user->email }}</h4>
