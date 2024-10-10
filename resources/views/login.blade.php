@@ -34,7 +34,7 @@
             />
             </div>
             <div class="d-grid">
-            <button type="submit" class="btn btn-primary btn-fu">
+            <button type="submit" class="btn btn-outline-dark btn-fu">
                 Login
             </button>
             </div>

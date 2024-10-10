@@ -16,12 +16,12 @@
 
 <!--responsible for making displayed data dynamic-->
     @foreach( $posts as $post )
-        <div class="card m-2">
+        <div class="card m-2 border border-black">
             <div class="card-body">
                 <h3>{{ $post->content }}</h3>
                 <h5>Posted by {{ $post->user->name }}</h5>
                 <div class="d-flex align-items-center gap-2">
-                    <a href="/posts/{{ $post->id }}" class="btn btn-success rounded btn-sm">View</a>
+                    <a href="/posts/{{ $post->id }}" class="btn btn-outline-dark rounded btn-sm">View</a>
                 </div>
             </div>
         </div>

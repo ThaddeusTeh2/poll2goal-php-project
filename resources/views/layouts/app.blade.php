@@ -27,9 +27,9 @@
         <div class="row d-flex justify-content-end">
           <nav class="navbar navbar-expand-lg">
             <div class="container">
-              <a class='navbar-brand' href='/'>
-                Poll2Goal
-              </a>
+              <h1 class="m-2"><i class="bi bi-graph-up-arrow"></i> 1Goal1Poll</h1>
+              <br>
+              <p class="m-2">Industry leading emotional validation</p>
             </div>
           </nav>
         </div>

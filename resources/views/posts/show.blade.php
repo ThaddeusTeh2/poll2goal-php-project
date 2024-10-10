@@ -5,35 +5,32 @@
 @if (auth()->user()->role === "user" || "mod" || "admin")
 
 @section('content')
-<div class="container text-center p-5">
+<div class="container text-center border border-black rounded p-5">
     <div class="p-3">
       <h1>{{ $post->content }}</h1>
       <h4>by {{ $post->user->name }}</h4>
     </div>
 
-    <div>
-      <!-- Form for Yes -->
+    <!--voting func here-->
+    <div class="d-flex justify-content-center">
+      <!-- form for Yes -->
       <form action="/votes" method="POST">
           @csrf
           <input type="hidden" name="vote" value="1"> <!-- Yes vote -->
           <input type="hidden" name="post_id" value={{$post->id}}>
-          <h2>{{$votesYes}}</h2>
-          <button type="submit" class="btn btn-success">Yes</button>
+          <button type="submit" class="btn btn-outline-success m-2"><i class="bi bi-hand-thumbs-up"></i> {{$votesYes}}</button>
         </form>
         
-        <!-- Form for No -->
+        <!-- form for No -->
         <form action="/votes" method="POST">
           @csrf
           <input type="hidden" name="vote" value="0"> <!-- No vote -->
           <input type="hidden" name="post_id" value={{$post->id}}>
-          <button type="submit" class="btn btn-danger">No</button>
-          <h2>{{$votesNo}}</h2>
+          <button type="submit" class="btn btn-outline-danger m-2"><i class="bi bi-hand-thumbs-down"></i> {{$votesNo}}</button>
       </form>
   </div>
 
-    <!--TODO voting func here-->
-
-    <!--TODO comments func here-->
+    <!--comments func here-->
     <div class="m-5">
       <form action="/comments" method="POST">
         <input type="hidden" name="post_id" value="{{$post->id}}" >
@@ -41,7 +38,7 @@
           <label for="comment-box" class="form-label">Leave a comment.</label>
           <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
 
-          <button type="submit" class="btn btn-primary m-2"><i class="bi bi-send"></i></button>
+          <button type="submit" class="btn btn-outline-primary m-2"><i class="bi bi-send"></i></button>
       </form>
   </div>
 
@@ -50,8 +47,8 @@
       <div>
         @foreach($comments as $comment)
         <div class="card m-2">
-          <div class="card-body">
-              <h3>{{ $comment->user->name }}: {{ $comment->comment }}</h3>
+          <div class="card-body d-flex flex-start">
+              <h4>{{ $comment->user->name }}: {{ $comment->comment }}</h4>
           </div>
        </div>
        @endforeach

@@ -6,25 +6,76 @@
 
 @section('content')
 
-<div class="d-flex justify-content-between align-items-center">
+<div class="d-flex m-2 justify-content-between align-items-center">
     <h1>Manage Users</h1>
 </div>
 @foreach( $users as $user )
-    <div class="card m-2 d-flex">
+    
+    @if (auth()->user()->id === $user->id)
+    <div class="card m-2 d-flex border border-black">
         <div class="card-body">
-            <h3 class="text-primary">{{ $user->name }}</h3>
-            <h3 class="text-warning">{{ $user->role }}</h3>
+            <h3 class="text-dark">{{ $user->name }}</h3>
+
+            <form action="/users/{{ $user->id }}" method="POST">
+                <div class="form-group mb-3">
+                    <label for="role">Role</label>
+                    <select name="role" id="role">
+
+
+                        <option value="user" <?php echo $user->role== 'user' ? "selected" : "" ?> >User</option>
+
+                        <option value="tm" <?php echo $user->role== 'mod' ? "selected" : "" ?> >Ticket Manager</option>
+
+                        <option value="admin" <?php echo $user->role== 'admin' ? "selected" : "" ?> >Admin</option>
+
+                    </select>
+                </div>
+            </form>
+            
+
+            <h4>{{ $user->email }}</h4>
+            <h5>created on {{ $user->created_at }}</h5>
+            <div class="d-flex align-items-center gap-2">
+                <form action="/users/{{ $user->id }}" method="POST">
+                    @csrf
+                </form>
+            </div>
+        </div>
+    </div>
+    @else
+    <div class="card m-2 d-flex border border-black">
+        <div class="card-body">
+            <h3 class="text-dark">{{ $user->name }}</h3>
+            
+            <form action="/users/{{ $user->id }}" method="POST">
+                <div class="form-group mb-3">
+                    <label for="role">Role</label>
+                    <select name="role" id="role">
+
+
+                        <option value="user" <?php echo $user->role== 'user' ? "selected" : "" ?> >User</option>
+
+                        <option value="tm" <?php echo $user->role== 'mod' ? "selected" : "" ?> >Mod</option>
+
+                        <option value="admin" <?php echo $user->role== 'admin' ? "selected" : "" ?> >Admin</option>
+
+                    </select>
+                </div>
+            </form>
+              
             <h4>{{ $user->email }}</h4>
             <h5>created on {{ $user->created_at }}</h5>
             <div class="d-flex align-items-center gap-2">
                 <form action="/users/{{ $user->id }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button class="btn btn-danger rounded btn-sm">Delete</button>
+                    <button class="btn btn-outline-danger rounded btn-sm">Delete</button>
                 </form>
             </div>
         </div>
     </div>
+    @endif
+
 @endforeach
 
 @endsection

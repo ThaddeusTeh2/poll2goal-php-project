@@ -1,7 +1,7 @@
 @extends("layouts.app")
 
 @section('content')
-<div class="container">
+<div class="container m-5 rounded border border-black">
     <h1>Edit Post</h1>
         <!-- error box -->
         @if ( $errors->any() )
@@ -18,7 +18,7 @@
             <label for="content">Content</label>
             <textarea class="form-control" id="content" name="content" rows="5">{{ $post->content }}</textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Update Post</button>
+        <button type="submit" class="btn btn-primary mb-2">Update Post</button>
     </form>
 </div>
 @endsection
