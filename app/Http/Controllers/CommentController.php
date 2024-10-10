@@ -37,13 +37,16 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'comment' => 'required'
+            'post_id' => 'required',
+            'comment' => 'required',
         ]);
+        // var_dump($validatedData);
+        // $validatedData['post_id'] = $id;
 
         // create comment with the current logged in user (user_id) built-in
         $post = auth()->user()->comments()->create( $validatedData );
 
-        // return redirect("posts.show");
+        return redirect()->route('posts.show',$validatedData['post_id']);
     }
 
     /**

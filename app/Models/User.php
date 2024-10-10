@@ -50,4 +50,14 @@ class User extends Authenticatable
         // this one is indicating a user can have many posts
         return $this->hasMany(Post::class);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function votes()
+    {
+        return $this->hasMany(Vote::class);
+    }
 }

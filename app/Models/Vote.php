@@ -5,17 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class Vote extends Model
 {
     use HasFactory;
 
     // put all the required fields here
-    protected $fillable = [ "comment", "user_id", "post_id"];
+    protected $fillable = [ "vote", "user_id", "post_id"];
 
-    // function to grab all the comment related to the user
+    // function to grab all the votes related to the user
     public function user()
     {
-        // this is to indicate that a comment is belong to a user
+        // this is to indicate that a vote is belong to a user
         return $this->belongsTo(User::class);
     }
+
+
 }

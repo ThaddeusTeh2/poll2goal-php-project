@@ -10,6 +10,7 @@ use App\Http\Controllers\ManageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\VoteController;
 
 
 
@@ -58,6 +59,7 @@ Route::get("/users", [
 ]);
 
 
+
 //poll routes
 Route::resource("posts", PostController::class);
 
@@ -65,5 +67,16 @@ Route::resource("posts", PostController::class);
 Route::resource("users", UserController::class);
 
 //comment routes
-Route::resource("show", CommentController::class);
+/*
+- GET `/comments` (index)
+- POST `/comments` (store)
+- GET `/comments/{comment}` (show)
+- GET `/comments/{comment}/edit` (edit)
+- PUT/PATCH `/comments/{comment}` (update)
+- DELETE `/comments/{comment}` (destroy)
+*/
+Route::resource("comments", CommentController::class);
+
+Route::resource("votes", VoteController::class);
+
 

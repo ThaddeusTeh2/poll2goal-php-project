@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Comment;
+use App\Models\Vote;
+
 
 // Gate is to control who can access what
 use Illuminate\Support\Facades\Gate;
@@ -62,7 +65,12 @@ class PostController extends Controller
     {
         // load the post by id
         $post = Post::findOrFail($id);
-        return view("posts.show", [ 'post' => $post ]);
+        //load the comments belonging to the post
+        $comments = Comment::where('post_id', $id)->get();
+        $votesNo = Vote::where('post_id', $id)->where('vote', 0)->count();
+        $votesYes = Vote::where('post_id', $id)->where('vote', 1)->count();
+
+        return view("posts.show", [ 'post' => $post, 'comments' => $comments, 'votesNo' => $votesNo, 'votesYes' => $votesYes ]);
     }
 
     /**
@@ -113,4 +121,6 @@ class PostController extends Controller
 
         return redirect("ctrl");
     }
+
+    
 }

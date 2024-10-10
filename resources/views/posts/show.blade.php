@@ -12,22 +12,38 @@
     </div>
 
     <div>
-        <button type="button" class="btn btn-success">Yes</button>
-        <button type="button" class="btn btn-danger">No</button>
-    </div>
-
+      <!-- Form for Yes -->
+      <form action="/votes" method="POST">
+          @csrf
+          <input type="hidden" name="vote" value="1"> <!-- Yes vote -->
+          <input type="hidden" name="post_id" value={{$post->id}}>
+          <h2>{{$votesYes}}</h2>
+          <button type="submit" class="btn btn-success">Yes</button>
+        </form>
+        
+        <!-- Form for No -->
+        <form action="/votes" method="POST">
+          @csrf
+          <input type="hidden" name="vote" value="0"> <!-- No vote -->
+          <input type="hidden" name="post_id" value={{$post->id}}>
+          <button type="submit" class="btn btn-danger">No</button>
+          <h2>{{$votesNo}}</h2>
+      </form>
+  </div>
 
     <!--TODO voting func here-->
 
     <!--TODO comments func here-->
     <div class="m-5">
-        <form action="/posts" method="POST">
-            @CSRF
-        <label for="comment-box" class="form-label">Leave a comment.</label>
-        <textarea class="form-control" id="comment" rows="3"></textarea>
-        <a href="#" class="btn btn-primary m-2"><i class="bi bi-send"></i></a>
-        </form>
-      </div>
+      <form action="/comments" method="POST">
+        <input type="hidden" name="post_id" value="{{$post->id}}" >
+          @CSRF
+          <label for="comment-box" class="form-label">Leave a comment.</label>
+          <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+
+          <button type="submit" class="btn btn-primary m-2"><i class="bi bi-send"></i></button>
+      </form>
+  </div>
 
       <!--comments echoed here-->
 
@@ -35,8 +51,7 @@
         @foreach($comments as $comment)
         <div class="card m-2">
           <div class="card-body">
-              <h3>{{ $comment->comment }}</h3>
-              {{-- <h5>by {{ $comment->user->name }}</h5> --}}
+              <h3>{{ $comment->user->name }}: {{ $comment->comment }}</h3>
           </div>
        </div>
        @endforeach
