@@ -51,6 +51,7 @@
             <h3 class="text-dark">{{ $user->name }}</h3>
             
             <form action="/users/{{ $user->id }}" method="POST">
+                @csrf
                 @method ("PUT")
                 <div class="form-group mb-3">
                     <label for="role">Role</label>
